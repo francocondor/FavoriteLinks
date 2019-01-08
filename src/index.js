@@ -16,7 +16,6 @@ app.engine('.hbs', exphbs({
     extname: '.hbs',
     helpers: require('./lib/handlebars.js')
 }));
-
 app.set('view engine', '.hbs');
 
 // Middlewares
@@ -36,7 +35,7 @@ app.use(require('./routes/authentication'));
 app.use('/links',require('./routes/links'));
 
 // Public
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Inicializando el servidor
 app.listen(app.get('port'), () => {
